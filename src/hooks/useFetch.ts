@@ -28,8 +28,8 @@ export function useFetchMulti<T>(
   search?: string
 ): Params<T> {
   const pageNum = page || 1;
-  
-  
+
+
   let url = `https://api.themoviedb.org/3/${tipo}/${mediaLists}?page=${pageNum}`;
   if (search !== "" && search !== undefined) {
     url = `https://api.themoviedb.org/3/search/${tipo}?query=${search}&page=${pageNum}`
@@ -159,9 +159,11 @@ export const getList = async (token: string) => {
   }
 };
 
-export const useGetCompleteList = (token: string, page?: number) => {
-  const pageNum = page || 0;
-  const url = `/api/media?page=${pageNum}`;
+export const useGetCompleteList = (token: string) => {
+  // const pageNum = page || 0;
+  // const url = `/api/media?page=${pageNum}`;
+
+  const url = `/api/media`;
   const [data, setData] = useState<Media[]>([]);
   const [loading, setLoading] = useState(false);
 

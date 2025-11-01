@@ -19,7 +19,6 @@ export const apiConection = async (
 ): Promise<any | null> => {
   const url = `/api/${type}`;
   try {
-    console.log(url);
 
     const response = await fetch(url, {
       method: "POST",

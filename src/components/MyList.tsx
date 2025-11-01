@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { tokenValidator, useGetCompleteList } from "../hooks";
 import { Card } from "./Card";
 import { Media, MediaData } from "../types";
@@ -7,13 +6,13 @@ import { Skeleton } from "./Skeleton";
 export function MyList() {
   const token = window.localStorage.getItem("Authorization");
   const numArray = [1, 2, 3, 4, 5, 6, 7];
-  const [page, setPage] = useState(0);
   if (!token) {
     tokenValidator();
     return;
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { data, loading } = useGetCompleteList(token, page);
+  const { data, loading } = useGetCompleteList(token);
+  console.log(data);
 
   if (loading) {
     return (

@@ -10,7 +10,6 @@ export function MenuLinks({ isOpen, setIsOpen }: Props) {
   // const [];
   const navigate = useNavigate();
   const location = useLocation().pathname;
-  console.log(location);
 
   const handleLinkClick = (path: string) => {
     navigate(path);
