@@ -17,9 +17,12 @@ export const apiConection = async (
   body: FormData,
   type: TypeReq
 ): Promise<any | null> => {
-  const url = `/api/${type}`;
-  try {
+  const API_BASE = import.meta.env.PROD
+    ? import.meta.env.VITE_API_URL // usa tu backend real en producción
+    : "/api";
 
+  const url = `${API_BASE}/${type}`;
+  try {
     const response = await fetch(url, {
       method: "POST",
       headers: {

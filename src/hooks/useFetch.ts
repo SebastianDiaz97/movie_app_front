@@ -113,8 +113,13 @@ export function useFetchDetail<T>(
   return { data, loading, error };
 }
 
+const API_BASE = import.meta.env.PROD
+  ? import.meta.env.VITE_API_URL  // usa tu backend real en producción
+  : "/api"; 
+
 export const addList = async (body: object, token: string) => {
-  const url = `/api/media/addToList`;
+
+  const url = `${API_BASE}/media/addToList`;
   try {
     tokenValidator();
     const response = await fetch(url, {
@@ -136,7 +141,7 @@ export const addList = async (body: object, token: string) => {
 };
 
 export const getList = async (token: string) => {
-  const url = `/api/user`;
+  const url = `${API_BASE}/user`;
 
   try {
     tokenValidator();
@@ -159,11 +164,11 @@ export const getList = async (token: string) => {
   }
 };
 
-export const useGetCompleteList = (token: string) => {
+export const useGetCompleteList = (token: string) => { 
   // const pageNum = page || 0;
   // const url = `/api/media?page=${pageNum}`;
 
-  const url = `/api/media`;
+  const url = `${API_BASE}/media`;
   const [data, setData] = useState<Media[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -197,7 +202,7 @@ export const useGetCompleteList = (token: string) => {
 };
 
 export const removeList = async (token: string, tmdbId: number) => {
-  const url = `/api/user/${tmdbId}`;
+  const url = `${API_BASE}/user/${tmdbId}`;
 
   try {
     tokenValidator();
@@ -236,7 +241,7 @@ export const tokenValidator = async () => {
 
     if (!token) return;
 
-    const res = await fetch("/api/user/auth", {
+    const res = await fetch(`${API_BASE}/user/auth`, {
       headers: {
         Authorization: `${token}`,
       },
