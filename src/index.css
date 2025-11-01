@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* Chrome, Edge, Safari */
+.custom-scroll::-webkit-scrollbar {
+  height: 8px; /* altura de la barra horizontal */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* gris Tailwind gray-400 */
+  border-radius: 9999px; /* redondeado */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* gris más oscuro */
+}
+
+/* Firefox */
+.custom-scroll {
+  scrollbar-color: #9ca3af transparent;
+  scrollbar-width: thin;
+}
